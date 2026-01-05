@@ -64,32 +64,23 @@ const Sidebar = () => {
     }
   };
 
-  const navItems = [
-    { icon: Users, label: "Sales", path: "/" },
-    ...(user?.role === "admin" || user?.role === "desk"
+  const navItems =
+    user?.role === "admin"
       ? [
+          { icon: Users, label: "Sales", path: "/" },
           { icon: UserPlus, label: "Users", path: "/users" },
           { icon: List, label: "Lead Statuses", path: "/statuses" },
           { icon: HelpCircle, label: "Lead Questions", path: "/questions" },
-          ...(user?.role === "admin"
-            ? [
-                { icon: Key, label: "API Keys", path: "/api" },
-                {
-                  icon: BarChart,
-                  label: "API Dashboard",
-                  path: "/api/dashboard",
-                },
-                {
-                  icon: GitBranch,
-                  label: "Assignment Rules",
-                  path: "/assignment-rules",
-                },
-              ]
-            : []),
+          { icon: Key, label: "API Keys", path: "/api" },
+          { icon: BarChart, label: "API Dashboard", path: "/api/dashboard" },
+          {
+            icon: GitBranch,
+            label: "Assignment Rules",
+            path: "/assignment-rules",
+          },
           { icon: Settings, label: "Settings", path: "/settings" },
         ]
-      : []),
-  ];
+      : [{ icon: Users, label: "Sales", path: "/" }];
 
   const renderNavItems = () => (
     <nav className="space-y-2 flex-1">
